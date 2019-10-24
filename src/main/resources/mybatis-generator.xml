@@ -28,9 +28,17 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table tableName="user_info" domainObjectName="UserDo" enableCountByExample="false"
+        <table tableName="goods" domainObjectName="Goods" enableCountByExample="false"
                enableUpdateByExample="false"></table>
-        <table tableName="user_password" domainObjectName="UserPasswordDo"></table>
-
+        <table tableName="miaosha_goods" domainObjectName="MiaoshaGoods" enableCountByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="miaosha_order" domainObjectName="MiaoshaOrder" enableCountByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="miaosha_user" domainObjectName="MiaoshaUser" enableCountByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="order_info" domainObjectName="OrderInfo" enableCountByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="user" domainObjectName="User" enableCountByExample="false"
+               enableUpdateByExample="false"></table>
     </context>
 </generatorConfiguration>
