@@ -14,8 +14,6 @@ public class RedisService {
     @Autowired
     JedisPool jedisPool;
 
-    @Autowired
-    RedisConfig redisConfig;
     public <T> T get(String key,Class<T> tClass){
         Jedis jedis = null;
         try{
@@ -74,14 +72,5 @@ public class RedisService {
         if(jedis!=null){
             jedis.close();
         }
-    }
-    @Bean
-    public JedisPool JedisFactory(){
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(redisConfig.getPoolMaxIdle());
-        jedisPoolConfig.setMaxTotal(redisConfig.getPoolMaxTotal());
-        jedisPoolConfig.setMaxWaitMillis(redisConfig.getPoolMaxWait()*1000);
-        JedisPool jp = new JedisPool(jedisPoolConfig,redisConfig.getHost(),redisConfig.getPort(),redisConfig.getTimeout()*1000,redisConfig.getPassword(),0);
-        return jp;
     }
 }
