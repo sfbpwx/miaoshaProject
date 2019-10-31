@@ -15,7 +15,7 @@ public class UserContorller {
     @RequestMapping("/redis/get")
     @ResponseBody
     public Result<String> redisGet(){
-//        redisService.set("1","hello");
+        redisService.set("1","hello world");
         String v1 = redisService.get("1",String.class);
         return Result.success(v1);
     }

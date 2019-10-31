@@ -3,11 +3,9 @@ package com.miaoshaproject.redis;
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 
 @Service
 public class RedisService {
@@ -26,18 +24,20 @@ public class RedisService {
         }
     }
 
-    public void set(String key,Class<?> tClass){
+    public <T> boolean set(String key,T value){
         Jedis jedis = null;
         try{
             jedis = jedisPool.getResource();
-            String str = beanToString(tClass);
+            String str = beanToString(value);
+            if(StringUtils.isEmpty(str))return false;
             jedis.set(key,str);
+            return true;
         }finally {
             returnToPool(jedis);
         }
     }
 
-    private <T> String beanToString(Class<T> tClass) {
+    private <T> String beanToString(T tClass) {
         if(tClass==null){
             return null;
         }
