@@ -3,22 +3,21 @@ package com.miaoshaproject.redis;
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 
 @Service
 public class RedisService {
     @Autowired
     JedisPool jedisPool;
 
-    public <T> T get(String key,Class<T> tClass){
+    public <T> T get(KeysPrefix keysPrefix,String key,Class<T> tClass){
         Jedis jedis = null;
         try{
            jedis = jedisPool.getResource();
-           String str = jedis.get(key);
+           String realKey = keysPrefix.getPrefix()+key;
+           String str = jedis.get(realKey);
            T t = stringToBean(str,tClass);
            return t;
         }finally {
@@ -26,18 +25,20 @@ public class RedisService {
         }
     }
 
-    public void set(String key,Class<?> tClass){
+    public <T> boolean set(KeysPrefix keysPrefix,String key,T value){
         Jedis jedis = null;
         try{
             jedis = jedisPool.getResource();
-            String str = beanToString(tClass);
-            jedis.set(key,str);
+            String str = beanToString(value);
+            if(StringUtils.isEmpty(str))return false;
+            jedis.set(keysPrefix.getPrefix()+key,str);
+            return true;
         }finally {
             returnToPool(jedis);
         }
     }
 
-    private <T> String beanToString(Class<T> tClass) {
+    private <T> String beanToString(T tClass) {
         if(tClass==null){
             return null;
         }

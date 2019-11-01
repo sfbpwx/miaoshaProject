@@ -23,7 +23,7 @@ public class LoginContorller {
     @ResponseBody
     public Result<String> redisGet(){
 //        redisService.set("1","hello");
-        String v1 = redisService.get("1",String.class);
+//        String v1 = redisService.get("1",String.class);
         return Result.success("11111");
     }
 }

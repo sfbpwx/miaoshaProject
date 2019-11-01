@@ -1,6 +1,7 @@
 package com.miaoshaproject.controller;
 
 import com.miaoshaproject.redis.RedisService;
+import com.miaoshaproject.redis.UserKey;
 import com.miaoshaproject.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ public class UserContorller {
     @ResponseBody
     public Result<String> redisGet(){
 //        redisService.set("1","hello");
-        String v1 = redisService.get("1",String.class);
+        String v1 = redisService.get(UserKey.getById,"1",String.class);
         return Result.success("11111");
     }
 }
