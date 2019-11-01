@@ -1,4 +1,4 @@
-package com.miaosha.miaoshaProject;
+package com.miaoshaproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
