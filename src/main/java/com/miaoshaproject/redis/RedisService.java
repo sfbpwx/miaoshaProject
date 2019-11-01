@@ -12,11 +12,12 @@ public class RedisService {
     @Autowired
     JedisPool jedisPool;
 
-    public <T> T get(String key,Class<T> tClass){
+    public <T> T get(KeysPrefix keysPrefix,String key,Class<T> tClass){
         Jedis jedis = null;
         try{
            jedis = jedisPool.getResource();
-           String str = jedis.get(key);
+           String realKey = keysPrefix.getPrefix()+key;
+           String str = jedis.get(realKey);
            T t = stringToBean(str,tClass);
            return t;
         }finally {
@@ -24,13 +25,13 @@ public class RedisService {
         }
     }
 
-    public <T> boolean set(String key,T value){
+    public <T> boolean set(KeysPrefix keysPrefix,String key,T value){
         Jedis jedis = null;
         try{
             jedis = jedisPool.getResource();
             String str = beanToString(value);
             if(StringUtils.isEmpty(str))return false;
-            jedis.set(key,str);
+            jedis.set(keysPrefix.getPrefix()+key,str);
             return true;
         }finally {
             returnToPool(jedis);
