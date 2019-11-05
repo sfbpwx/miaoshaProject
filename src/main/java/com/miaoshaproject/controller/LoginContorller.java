@@ -39,13 +39,14 @@ public class LoginContorller {
 //        //登录
 //        String token = userService.login(response, loginVo);
 //        return Result.success(token);
-        String mobile = loginVo.getMobile();
-        if(StringUtils.isEmpty(mobile)){
-            return Result.error(CodeMsg.MOBILE_EMPTY);
-        }
-        if(!ValidateUtil.isMobile(mobile)){
-            return Result.error(CodeMsg.MOBILE_ERROR);
-        }
+//        String mobile = loginVo.getMobile();
+//        if(StringUtils.isEmpty(mobile)){
+//            return Result.error(CodeMsg.MOBILE_EMPTY);
+//        }
+//        if(!ValidateUtil.isMobile(mobile)){
+//            return Result.error(CodeMsg.MOBILE_ERROR);
+//        }haode
+
         CodeMsg codeMsg = miaoshaUserService.login(loginVo);
         if(codeMsg.getCode()==0){
             return Result.success("登陆成功");

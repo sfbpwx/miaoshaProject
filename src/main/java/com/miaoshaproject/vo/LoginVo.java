@@ -1,6 +1,5 @@
 package com.miaoshaproject.vo;
 
-import com.miaoshaproject.validator.IsMobile;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
