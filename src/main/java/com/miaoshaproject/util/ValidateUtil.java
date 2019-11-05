@@ -1,6 +1,5 @@
 package com.miaoshaproject.util;
 
-import com.miaoshaproject.result.CodeMsg;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Matcher;
