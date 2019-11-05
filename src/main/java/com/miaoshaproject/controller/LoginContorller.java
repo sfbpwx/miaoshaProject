@@ -8,7 +8,6 @@ import com.miaoshaproject.result.Result;
 import com.miaoshaproject.service.MiaoshaUserService;
 import com.miaoshaproject.util.ValidateUtil;
 import com.miaoshaproject.vo.LoginVo;
-import com.sun.org.apache.bcel.internal.classfile.Code;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +39,6 @@ public class LoginContorller {
 //        //登录
 //        String token = userService.login(response, loginVo);
 //        return Result.success(token);
-        String passInput = loginVo.getPassword();
         String mobile = loginVo.getMobile();
         if(StringUtils.isEmpty(mobile)){
             return Result.error(CodeMsg.MOBILE_EMPTY);

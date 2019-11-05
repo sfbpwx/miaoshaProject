@@ -1,12 +1,13 @@
 package com.miaoshaproject.vo;
 
+import com.miaoshaproject.validator.IsMobile;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
 
 public class LoginVo {
     @NotNull
-//    @IsMobile
+    @IsMobile
     private String mobile;
 
     @NotNull
