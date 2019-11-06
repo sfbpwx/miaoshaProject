@@ -8,6 +8,8 @@ import com.miaoshaproject.result.Result;
 import com.miaoshaproject.service.MiaoshaUserService;
 import com.miaoshaproject.util.ValidateUtil;
 import com.miaoshaproject.vo.LoginVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,11 +21,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/login")
 public class LoginContorller {
-    @Autowired
-    RedisService redisService;
-
-    @Autowired
-    MiaoshaUserMapper miaoshaUserMapper;
+    private static Logger log = LoggerFactory.getLogger(LoginContorller.class);
 
     @Autowired
     MiaoshaUserService miaoshaUserService;
@@ -35,23 +33,9 @@ public class LoginContorller {
     @RequestMapping("/do_login")
     @ResponseBody
     public Result<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
-//        log.info(loginVo.toString());
-//        //登录
-//        String token = userService.login(response, loginVo);
-//        return Result.success(token);
-//        String mobile = loginVo.getMobile();
-//        if(StringUtils.isEmpty(mobile)){
-//            return Result.error(CodeMsg.MOBILE_EMPTY);
-//        }
-//        if(!ValidateUtil.isMobile(mobile)){
-//            return Result.error(CodeMsg.MOBILE_ERROR);
-//        }haode
-
-        CodeMsg codeMsg = miaoshaUserService.login(loginVo);
-        if(codeMsg.getCode()==0){
-            return Result.success("登陆成功");
-        }
-        return Result.error(codeMsg);
+        log.info(loginVo.toString());
+        miaoshaUserService.login(response,loginVo);
+        return Result.success("登陆成功");
     }
 
 }

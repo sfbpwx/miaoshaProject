@@ -2,13 +2,19 @@ package com.miaoshaproject.exception;
 
 import com.miaoshaproject.result.CodeMsg;
 
-public class GlobalException extends RuntimeException {
+public class GlobalException extends RuntimeException{
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+	
+	private CodeMsg cm;
+	
+	public GlobalException(CodeMsg cm) {
+		super(cm.toString());
+		this.cm = cm;
+	}
 
-    private CodeMsg codeMsg;
+	public CodeMsg getCm() {
+		return cm;
+	}
 
-    public void GlobalException(CodeMsg codeMsg){
-
-    }
 }
