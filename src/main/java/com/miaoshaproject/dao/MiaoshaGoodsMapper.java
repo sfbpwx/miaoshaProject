@@ -1,5 +1,6 @@
 package com.miaoshaproject.dao;
 
+
 import com.miaoshaproject.dataobject.MiaoshaGoods;
 
 public interface MiaoshaGoodsMapper {

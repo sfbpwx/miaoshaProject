@@ -49,7 +49,7 @@ public class MiaoshaUserService {
         return CodeMsg.SUCCESS;
     }
 
-    public MiaoshaUser getByToken(HttpServletResponse response,String token) {
+    public MiaoshaUser getByToken(HttpServletResponse response, String token) {
         if(StringUtils.isEmpty(token)){
             return null;
         }
