@@ -1,7 +1,7 @@
 package com.miaoshaproject.dao;
 
 
-import com.miaoshaproject.dataobject.MiaoshaGoods;
+import com.miaoshaproject.domain.MiaoshaGoods;
 
 public interface MiaoshaGoodsMapper {
     /**

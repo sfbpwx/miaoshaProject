@@ -1,7 +1,7 @@
 package com.miaoshaproject.service;
 
-import com.miaoshaproject.dataobject.MiaoshaUser;
 import com.miaoshaproject.domain.MiaoshaOrder;
+import com.miaoshaproject.domain.MiaoshaUser;
 import com.miaoshaproject.domain.OrderInfo;
 import com.miaoshaproject.localdao.OrderDao;
 import com.miaoshaproject.redis.OrderKey;
@@ -24,8 +24,8 @@ public class OrderService {
 	RedisService redisService;
 	
 	public MiaoshaOrder getMiaoshaOrderByUserIdGoodsId(long userId, long goodsId) {
-		//return orderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
-		return redisService.get(OrderKey.getMiaoshaOrderByUidGid, ""+userId+"_"+goodsId, MiaoshaOrder.class);
+		return orderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
+//		return redisService.get(OrderKey.getMiaoshaOrderByUidGid, ""+userId+"_"+goodsId, MiaoshaOrder.class);
 	}
 	
 	public OrderInfo getOrderById(long orderId) {

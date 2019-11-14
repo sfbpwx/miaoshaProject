@@ -1,7 +1,7 @@
 package com.miaoshaproject.config;
 
 import com.alibaba.druid.util.StringUtils;
-import com.miaoshaproject.dataobject.MiaoshaUser;
+import com.miaoshaproject.domain.MiaoshaUser;
 import com.miaoshaproject.service.MiaoshaUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;

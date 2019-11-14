@@ -1,6 +1,6 @@
 package com.miaoshaproject.dao;
 
-import com.miaoshaproject.dataobject.OrderInfo;
+import com.miaoshaproject.domain.OrderInfo;
 
 public interface OrderInfoMapper {
     /**

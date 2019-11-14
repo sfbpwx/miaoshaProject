@@ -2,7 +2,7 @@ package com.miaoshaproject.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.miaoshaproject.dao.MiaoshaUserMapper;
-import com.miaoshaproject.dataobject.MiaoshaUser;
+import com.miaoshaproject.domain.MiaoshaUser;
 import com.miaoshaproject.exception.GlobalException;
 import com.miaoshaproject.redis.MiaoshaUserKey;
 import com.miaoshaproject.redis.RedisService;

@@ -1,6 +1,6 @@
 package com.miaoshaproject.dao;
 
-import com.miaoshaproject.dataobject.User;
+import com.miaoshaproject.domain.User;
 
 public interface UserMapper {
     /**

@@ -1,6 +1,6 @@
 package com.miaoshaproject.dao;
 
-import com.miaoshaproject.dataobject.MiaoshaOrder;
+import com.miaoshaproject.domain.MiaoshaOrder;
 
 public interface MiaoshaOrderMapper {
     /**

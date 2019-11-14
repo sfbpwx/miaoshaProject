@@ -1,6 +1,6 @@
 package com.miaoshaproject.dao;
 
-import com.miaoshaproject.dataobject.Goods;
+import com.miaoshaproject.domain.Goods;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
