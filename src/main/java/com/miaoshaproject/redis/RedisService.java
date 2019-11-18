@@ -25,6 +25,17 @@ public class RedisService {
         }
     }
 
+    public boolean del(KeysPrefix keysPrefix,String key){
+        Jedis jedis = null;
+        try{
+            jedis = jedisPool.getResource();
+            long flag = jedis.del(keysPrefix.getPrefix()+key);
+            return flag>0;
+        }finally {
+            returnToPool(jedis);
+        }
+    }
+
     public <T> boolean set(KeysPrefix keysPrefix,String key,T value){
         Jedis jedis = null;
         try{
