@@ -46,6 +46,7 @@ public class GoodsContorller {
         model.addAttribute("user",miaoshaUser);
 //        return "goods_list";
         String html = redisService.get(GoodsKey.getGoodsList,"",String.class);
+//        redisService.del(GoodsKey.getGoodsList,"");
         if(!StringUtils.isEmpty(html)){
             return html;
         }
