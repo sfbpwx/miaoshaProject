@@ -49,7 +49,7 @@ public class RedisService {
         }
     }
 
-    private <T> String beanToString(T tClass) {
+    public static <T> String beanToString(T tClass) {
         if(tClass==null){
             return null;
         }
@@ -65,7 +65,7 @@ public class RedisService {
         }
     }
 
-    private <T> T stringToBean(String str,Class<T> tClass) {
+    public static <T> T stringToBean(String str,Class<T> tClass) {
         if(StringUtils.isEmpty(str)){
             return null;
         }
