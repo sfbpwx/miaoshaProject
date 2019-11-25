@@ -1,6 +1,7 @@
 package com.miaoshaproject.config;
 
 import com.alibaba.druid.util.StringUtils;
+import com.miaoshaproject.access.UserContext;
 import com.miaoshaproject.domain.MiaoshaUser;
 import com.miaoshaproject.service.MiaoshaUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +29,16 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest,
                                   WebDataBinderFactory webDataBinderFactory) throws Exception {
-        HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
-        HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
-        String paramToken = request.getParameter(MiaoshaUserService.COOKIE_NAME_TOKEN);
-        String cookieToken = getCookieValue(request,MiaoshaUserService.COOKIE_NAME_TOKEN);
-        if(StringUtils.isEmpty(cookieToken)&& StringUtils.isEmpty(paramToken)){
-            return "login";
-        }
-        String token = StringUtils.isEmpty(paramToken)?cookieToken:paramToken;
-        return miaoshaUserService.getByToken(response,token);
+//        HttpServletResponse response = nativeWebRequest.getNativeResponse(HttpServletResponse.class);
+//        HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
+//        String paramToken = request.getParameter(MiaoshaUserService.COOKIE_NAME_TOKEN);
+//        String cookieToken = getCookieValue(request,MiaoshaUserService.COOKIE_NAME_TOKEN);
+//        if(StringUtils.isEmpty(cookieToken)&& StringUtils.isEmpty(paramToken)){
+//            return "login";
+//        }
+//        String token = StringUtils.isEmpty(paramToken)?cookieToken:paramToken;
+//        return miaoshaUserService.getByToken(response,token);
+        return UserContext.getUser();
     }
 
     private String getCookieValue(HttpServletRequest request,String cookieName){

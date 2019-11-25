@@ -49,6 +49,21 @@ public class RedisService {
         }
     }
 
+    /**
+     * 减少值
+     * */
+    public <T> Long decr(KeysPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis =  jedisPool.getResource();
+            //生成真正的key
+            String realKey  = prefix.getPrefix() + key;
+            return  jedis.decr(realKey);
+        }finally {
+            returnToPool(jedis);
+        }
+    }
+
     public static <T> String beanToString(T tClass) {
         if(tClass==null){
             return null;
@@ -85,4 +100,34 @@ public class RedisService {
             jedis.close();
         }
     }
+
+    /**
+     * 判断key是否存在
+     * */
+    public <T> boolean exists(KeysPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis =  jedisPool.getResource();
+            //生成真正的key
+            String realKey  = prefix.getPrefix() + key;
+            return  jedis.exists(realKey);
+        }finally {
+            returnToPool(jedis);
+        }
+    }
+    /**
+     * 增加值
+     * */
+    public <T> Long incr(KeysPrefix prefix, String key) {
+        Jedis jedis = null;
+        try {
+            jedis =  jedisPool.getResource();
+            //生成真正的key
+            String realKey  = prefix.getPrefix() + key;
+            return  jedis.incr(realKey);
+        }finally {
+            returnToPool(jedis);
+        }
+    }
+
 }

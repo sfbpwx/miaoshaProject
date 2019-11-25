@@ -16,6 +16,8 @@ public class MQSender {
     public void send(Object message){
         String msg = RedisService.beanToString(message);
         log.info("sendMessage:"+message);
-        amqpTemplate.convertAndSend(QUEUE,msg);
+//        amqpTemplate.convertAndSend(QUEUE,msg);
+        amqpTemplate.convertAndSend(MQConfig.MIAOSHA_QUEUE,msg);
+
     }
 }

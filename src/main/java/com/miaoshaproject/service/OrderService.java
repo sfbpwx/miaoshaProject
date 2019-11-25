@@ -32,7 +32,7 @@ public class OrderService {
 		return orderDao.getOrderById(orderId);
 	}
 	
-
+	//	创建订单方法
 	@Transactional
 	public OrderInfo createOrder(MiaoshaUser user, GoodsVo goods) {
 		OrderInfo orderInfo = new OrderInfo();

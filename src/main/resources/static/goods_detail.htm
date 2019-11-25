@@ -123,13 +123,13 @@ function getMiaoshaResult(goodsId){
 		success:function(data){
 			if(data.code == 0){
 				var result = data.data;
-				if(result < 0){
+				if(result < 0){//返回值-1
 					layer.msg("对不起，秒杀失败");
 				}else if(result == 0){//继续轮询
 					setTimeout(function(){
 						getMiaoshaResult(goodsId);
-					}, 200);
-				}else{
+					}, 200);//200毫秒轮训一次
+				}else{//>0秒杀成功，因为goodsId都会大于0
 					layer.confirm("恭喜你，秒杀成功！查看订单？", {btn:["确定","取消"]},
 							function(){
 								window.location.href="/order_detail.htm?orderId="+result;
@@ -145,8 +145,7 @@ function getMiaoshaResult(goodsId){
 		error:function(){
 			layer.msg("客户端请求有误");
 		}
-	});
-}
+	});}a
 
 function doMiaosha(path){
 	$.ajax({
