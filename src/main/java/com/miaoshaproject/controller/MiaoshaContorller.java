@@ -127,6 +127,7 @@ public class MiaoshaContorller implements InitializingBean {
      * 0 排队
      * @return
      */
+    @AccessLimit(seconds=5,macCount=5,needLogin=true)
     @RequestMapping(value="/result",method = RequestMethod.POST)
     @ResponseBody
     public Result getMiaoshaGoodsResult(Model model, MiaoshaUser miaoshaUser, @RequestParam("goodsId")long goodsId
@@ -150,16 +151,16 @@ public class MiaoshaContorller implements InitializingBean {
         }
         //判断用户是否访问太频繁 5秒5次  防刷
 //        redisService.get(ActionKey.access,""+,clazz);
-        String uri = request.getRequestURI();
-        String key = uri+"_"+miaoshaUser.getId();
-        Integer count = redisService.get(ActionKey.access,key,Integer.class);
-        if(count ==null){
-            redisService.set(ActionKey.access,key,Integer.class);
-        }else if (count<5){
-            redisService.incr(ActionKey.access,key);
-        }else{
-            return Result.error(CodeMsg.ACCESS_LIMIT_REACHED);
-        }
+//        String uri = request.getRequestURI();
+//        String key = uri+"_"+miaoshaUser.getId();
+//        Integer count = redisService.get(ActionKey.access,key,Integer.class);
+//        if(count ==null){
+//            redisService.set(ActionKey.access,key,Integer.class);
+//        }else if (count<5){
+//            redisService.incr(ActionKey.access,key);
+//        }else{
+//            return Result.error(CodeMsg.ACCESS_LIMIT_REACHED);
+//        }
 
         boolean check = miaoshaService.checkVerifyCode(miaoshaUser,goodsId,verifyCode);
         if(!check){
