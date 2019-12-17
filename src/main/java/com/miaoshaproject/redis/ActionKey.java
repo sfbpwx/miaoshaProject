@@ -8,6 +8,10 @@ public class ActionKey extends BasePrefix {
        super(expireSecond,prefix);
    }
 
-   public static ActionKey access = new ActionKey(5,"as");
+//   public static ActionKey access = new ActionKey(5,"as");
+    //丢入expiredTime
+   public static ActionKey expired (int expiredTime){
+       return new ActionKey(expiredTime,"access");
+   }
 
 }
