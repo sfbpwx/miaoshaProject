@@ -14,16 +14,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import spring.annotation.WQAutowired;
+import spring.annotation.WQContorller;
+import spring.annotation.WQRequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-@Controller
-@RequestMapping("/login")
+@WQContorller
+@WQRequestMapping("/login")
 public class LoginContorller {
     private static Logger log = LoggerFactory.getLogger(LoginContorller.class);
 
-    @Autowired
+    @WQAutowired
     MiaoshaUserService miaoshaUserService;
     @RequestMapping("/to_login")
     public String toLogin() {

@@ -5,13 +5,15 @@ import com.miaoshaproject.localdao.GoodsDao;
 import com.miaoshaproject.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.annotation.WQAutowired;
+import spring.annotation.WQService;
 
 import java.util.List;
 
-@Service
+@WQService
 public class GoodsService {
 	
-	@Autowired
+	@WQAutowired
 	GoodsDao goodsDao;
 	
 	public List<GoodsVo> listGoodsVo(){
