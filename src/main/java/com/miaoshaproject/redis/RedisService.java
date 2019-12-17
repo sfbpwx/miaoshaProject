@@ -41,7 +41,9 @@ public class RedisService {
         try{
             jedis = jedisPool.getResource();
             String str = beanToString(value);
-            if(StringUtils.isEmpty(str))return false;
+            if(StringUtils.isEmpty(str)){
+                return false;
+            }
             jedis.set(keysPrefix.getPrefix()+key,str);
             return true;
         }finally {
